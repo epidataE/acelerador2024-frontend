@@ -26,11 +26,15 @@ const Home = () => {
             <div className="centered-div">
                 <h1 className="h1 display-1 fw-bold text-dark">Acelerador 2024</h1>
                 <img src={Image} alt='img' />
-                <nav>
+                <nav className="my-5">
+                     <Link to="/">
+                        <button className="btn btn-dark">Iniciar Sesion</button>
+                     </Link>
+                </nav>
+                <nav className="my-5" >
                     <Link to="/inscripcion">
-                        <button className="btn btn-dark my-5">Formulario Inscripción</button>
+                        <button className="btn btn-dark">Formulario Inscripción</button>
                     </Link>
-
                 </nav>
                 <nav>
                     <Link to="/cursos">
