@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../assets/logoAcelerador.png'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import UserForm from './UserForm';
 import UserList from './UserList';
@@ -23,15 +24,17 @@ const Home = () => {
         //Router: de react-router-dom envuelve toda la aplicación y habilita la funcionalidad de enrutamiento. Permite definir rutas y navegar entre diferentes componentes.
         <Router>   
             <div className="centered-div">
-                <h1 className="h1 display-1 fw-bold text-primary">Acelerador 2024</h1>
+                <h1 className="h1 display-1 fw-bold text-dark">Acelerador 2024</h1>
+                <img src={Image} alt='img' />
                 <nav>
                     <Link to="/inscripcion">
-                        <button className="btn btn-primary">Formulario Inscripción</button>
+                        <button className="btn btn-dark my-5">Formulario Inscripción</button>
                     </Link>
+
                 </nav>
                 <nav>
                     <Link to="/cursos">
-                        <button className="btn btn-secondary">Alta de Cursos</button>
+                        <button className="btn btn-dark">Alta de Cursos</button>
                     </Link>
                 </nav>
                 {/* con Routes: envuelvo todas las rutas de la aplicación.
