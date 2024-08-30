@@ -23,15 +23,15 @@ const Home = () => {
         //Router: de react-router-dom envuelve toda la aplicación y habilita la funcionalidad de enrutamiento. Permite definir rutas y navegar entre diferentes componentes.
         <Router>   
             <div className="centered-div">
-                <h1>Acelerador 2024</h1>
+                <h1 className="h1 display-1 fw-bold text-primary">Acelerador 2024</h1>
                 <nav>
                     <Link to="/inscripcion">
-                        <button>Formulario Inscripción</button>
+                        <button className="btn btn-primary">Formulario Inscripción</button>
                     </Link>
                 </nav>
                 <nav>
                     <Link to="/cursos">
-                        <button>Alta de Cursos</button>
+                        <button className="btn btn-secondary">Alta de Cursos</button>
                     </Link>
                 </nav>
                 {/* con Routes: envuelvo todas las rutas de la aplicación.

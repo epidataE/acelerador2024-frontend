@@ -36,46 +36,46 @@ useEffect(() => {
 
     return (  //esto hay que mejorar visualmente con Boostrap
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className="form-group">
                 <label>Nombre:</label>
-                <input type="text" name="nombre" value={user.nombre} onChange={handleChange} />
+                <input className="form-control" type="text" name="nombre" value={user.nombre} onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Apellido:</label>
-                <input type="text" name="apellido" value={user.apellido} onChange={handleChange} />
+                <input className="form-control" type="text" name="apellido" value={user.apellido} onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Email:</label>
-                <input type="email" name="email" value={user.email} onChange={handleChange} />
+                <input className="form-control" type="email" name="email" value={user.email} onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Contraseña:</label>
-                <input type="password" name="contrasena" value={user.contrasena} onChange={handleChange} />
+                <input className="form-control" type="password" name="contrasena" value={user.contrasena} onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Fecha Registro:</label>
-                <input type="fecha_creacion" name="fecha_creacion" value={user.fecha_creacion} onChange={handleChange} />
+                <input className="form-control" type="fecha_creacion" name="fecha_creacion" value={user.fecha_creacion} onChange={handleChange} />
             </div>
-            <div>
+            <div className="form-group">
                 <label>Rol:</label>
-                <select name="rolId" value={user.rolId} onChange={handleChange}>
+                <select className="form-control" name="rolId" value={user.rolId} onChange={handleChange}>
                     <option value="">Seleccione un rol</option>
                     <option value="1">Estudiante</option>
                     <option value="2">Mentor</option>
                 </select>
             </div>
-            <div>
+            <div className="form-group">
                 {/* <label>Curso/Empresa:</label>
                 <input type="text" name="cursoId" value={user.cursoId} onChange={handleChange} /> */}
                   <label>Curso/Empresa:</label>
-                <select name="cursoId" value={user.cursoId} onChange={handleChange}>
+                <select className="form-control" name="cursoId" value={user.cursoId} onChange={handleChange}>
                     <option value="">Seleccione un curso</option>
                     {cursos.map(curso => (
                         <option key={curso.id} value={curso.id}>{curso.nombre}</option>
                     ))}
                 </select>
             </div>
-            <button type="submit">Registrar</button>
+            <button className="btn btn-success" type="submit">Registrar</button>
         </form>
     );
 };
