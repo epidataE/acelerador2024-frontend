@@ -8,13 +8,24 @@
   pointer-events: none;
 }
 
+.roboto-font {
+  font-family: 'Roboto', sans-serif;
+}
+
+
 .centered-div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
+  justify-content: center;
   height: 100vh;
   text-align: center;
+}
+
+.custom-button {
+  width: 80vh; /* Hace que los botones ocupen todo el ancho del contenedor */
+  height: auto; /* Ajusta la altura de los botones */
+  font-size: 1.5rem; /* Ajusta el tamaño de la fuente */
 }
 
 @media (prefers-reduced-motion: no-preference) {
