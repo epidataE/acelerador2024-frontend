@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const EstudianteList = ({ role }) => { //UserList va a recibir 'role' para saber si muestra Estudiantes o mentores
 
@@ -13,12 +14,15 @@ const EstudianteList = ({ role }) => { //UserList va a recibir 'role' para saber
 
     return (  //retorna la lista de Estudiantes / Mentores segun el valor de role **Mejorar visualmente con Boostrap
         <div>
-            <h2>{role === 'estudiantes' ? 'Estudiantes' : 'Mentores'} </h2>
+             <h2 className="h2 display-5 fw-bold text-dark">{role === 'estudiantes' ? 'Estudiantes' : 'Mentores'} </h2>
             <ul>
                 {users.map(user => (
                     <li key={user.id}>{user.nombre} {user.apellido} | {user.curso.nombre} | {user.email}  </li>
                 ))}
             </ul>
+            <Link to="/">
+                        <button className="btn btn-dark">Volver</button>
+                    </Link>
         </div>
     );
 };
