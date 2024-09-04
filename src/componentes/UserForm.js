@@ -13,13 +13,20 @@ const UserForm = ({ onSubmit }) => {
     });
 //me traigo los cursos para mostrar
 const [cursos, setCursos] = useState([]);
+const [empresas, setEmpresas] = useState([]);
 const navigate = useNavigate(); // Hook que me permite la navegación
 
 useEffect(() => {
-    fetch('/api/cursos')
-        .then(response => response.json())
-        .then(data => setCursos(data));
-}, []);
+    if (user.rolId === '1') {
+        fetch('/api/cursos')
+            .then(response => response.json())
+            .then(data => setCursos(data));
+    } else if (user.rolId === '2') {
+        fetch('/api/empresas')
+            .then(response => response.json())
+            .then(data => setEmpresas(data));
+    }
+}, [user.rolId]);
 
 //Manejo de Cambios en el Form: handleChange se llama cada vez que hay un cambio en los inputs del formulario. Extrae el name y value del evento (e.target) y actualiza el estado user con el nuevo valor correspondiente al campo modificado.
     const handleChange = (e) => {
@@ -65,13 +72,14 @@ useEffect(() => {
                 </select>
             </div>
             <div className="form-group">
-                {/* <label>Curso/Empresa:</label>
-                <input type="text" name="cursoId" value={user.cursoId} onChange={handleChange} /> */}
-                  <label>Curso/Empresa:</label>
+                <label>Curso/Empresa:</label>
                 <select className="form-control" name="cursoId" value={user.cursoId} onChange={handleChange}>
-                    <option value="">Seleccione un curso</option>
-                    {cursos.map(curso => (
+                    <option value="">Seleccione una opción</option>
+                    {user.rolId === '1' && cursos.map(curso => (
                         <option key={curso.id} value={curso.id}>{curso.nombre}</option>
+                    ))}
+                    {user.rolId === '2' && empresas.map(empresa => (
+                        <option key={empresa.id} value={empresa.id}>{empresa.nombre}</option>
                     ))}
                 </select>
             </div>

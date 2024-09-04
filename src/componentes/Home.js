@@ -7,35 +7,20 @@ import MentorList from './MentorList';
 import CursoList from './CursoList';
 
 
-
-
 const handleUserSubmit = (user) => {
-    //desestructuración para extraer rolId y cursoId del objeto user para usar en el endpoint, y el resto de las propiedades se agrupan en un nuevo objeto llamado userData
     const { rolId, cursoId, ...userData } = user;
-    //llamo a la api con fetch (endpoint del backend)
-    if (rolId === 1){
-        fetch(`/api/estudiantes?rolId=${rolId}&cursoId=${cursoId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
+    const url = rolId === '1' ? `/api/estudiantes?rolId=${rolId}&cursoId=${cursoId}` : `/api/mentores?rolId=${rolId}&empresaId=${cursoId}`;
 
-    } else if (rolId === 2){
-        fetch(`/api/mentores?rolId=${rolId}&empresaId=${cursoId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userData)
-        })
-        .then(response => response.json())
-        .then(data => console.log(data));
-    }
-    
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
 };
 
 const Home = () => {
@@ -46,7 +31,7 @@ const Home = () => {
                 <h1 className="h1 display-4 fw-bold text-dark">¡Bienvenido!</h1>
                 <img className="mb-5" src={Image} alt='img' />
                 <nav className="mt-5 mb-3">
-                     <Link to="/">
+                     <Link to="">
                         <button className="btn btn-dark btn-lg custom-button">Iniciar Sesion</button>
                      </Link>
                 </nav>
@@ -73,6 +58,7 @@ const Home = () => {
                 {/* con Routes: envuelvo todas las rutas de la aplicación.
                 con Route: Defino una ruta específica */}
                 <Routes>
+                    
                     <Route path="/inscripcion" element={<UserForm onSubmit={handleUserSubmit} />} />
                     <Route path="/users/estudiantes" element={<EstudianteList role="estudiantes" />} />
                     <Route path="/users/mentores" element={<MentorList role="mentores" />} />
