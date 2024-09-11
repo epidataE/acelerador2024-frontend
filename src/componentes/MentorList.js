@@ -17,7 +17,7 @@ const MentorList = ({ role }) => { //UserList va a recibir 'role' para saber si 
             <h2 className="h2 display-5 fw-bold text-dark">{role === 'mentores' ? 'Mentores' : 'Estudiantes'} </h2>
             <ul>
                 {users.map(user => (
-                    <li key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email}  </li>
+                    <li key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
                 ))}
             </ul>
             <Link to="/">

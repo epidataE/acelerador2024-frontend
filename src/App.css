@@ -14,7 +14,7 @@
 
 
 .centered-div {
-  display: flex;
+  display:flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -27,6 +27,32 @@
   height: auto; /* Ajusta la altura de los botones */
   font-size: 1.5rem; /* Ajusta el tamaño de la fuente */
 }
+.equipo-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.equipo-card h3 {
+  margin-top: 0;
+}
+
+.equipo-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
+
+.form-group label {
+  margin-right: 10px; /* para que quede espacio entre el label y el input */
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
