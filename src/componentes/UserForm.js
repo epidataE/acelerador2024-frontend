@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const UserForm = ({ onSubmit }) => {
     const [user, setUser] = useState({
@@ -90,7 +90,10 @@ const UserForm = ({ onSubmit }) => {
                     ))}
                 </select>
             </div>
-            <button className="btn btn-primary" type="submit">Crear Usuario</button>
+            <button className="btn btn-dark " type="submit">Crear Usuario</button>
+            <Link to="/">
+                        <button className="btn btn-dark ">Volver</button>
+            </Link>
         </form>
     );
 };

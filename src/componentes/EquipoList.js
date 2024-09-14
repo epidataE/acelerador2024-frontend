@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const EquipoList = () => {
     const [equipos, setEquipos] = useState([]);
@@ -29,6 +30,9 @@ const EquipoList = () => {
                     </div>
                 ))
             )}
+             <Link to="/">
+                        <button className="btn btn-dark ">Volver</button>
+            </Link>
         </div>
     );
 };
