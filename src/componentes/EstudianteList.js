@@ -16,12 +16,13 @@ const EstudianteList = () => { //UserList va a recibir 'role' para saber si mues
     return (  //retorna la lista de Estudiantes / Mentores segun el valor de role **Mejorar visualmente con Boostrap
         <div>
             <h2 className="h2 display-5 fw-bold text-dark">{users.rol === 'ESTUDIANTE' ? 'Mentores' : 'Estudiantes'} </h2>
+            
             <ul>
                 {users.map(user => (
                     <li key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
                 ))}
             </ul>
-            <Link to="/">
+            <Link to="/home">
                         <button className="btn btn-dark ">Volver</button>
             </Link>
         </div>

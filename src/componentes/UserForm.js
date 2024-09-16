@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import Image from '../assets/LogoFigma.png';
 
 const UserForm = ({ onSubmit }) => {
     const [user, setUser] = useState({
@@ -43,7 +44,11 @@ const UserForm = ({ onSubmit }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-control centered-div">
+              <div className="centered-div roboto-font">
+              <img className="mb-5 w-25 mx-auto d-block" src={Image} alt='img' /> 
+            <h1 className="fw-bold text-dark">Crear una Nueva Cuenta</h1>
+            </div>
             <div className="form-group">
                 <label>Nombre:</label>
                 <input className="form-control" type="text" name="nombre" value={user.nombre} onChange={handleChange} required />
@@ -90,8 +95,34 @@ const UserForm = ({ onSubmit }) => {
                     ))}
                 </select>
             </div>
-            <button className="btn btn-primary" type="submit">Crear Usuario</button>
+            <button className="btn btn-dark w-100 mt-3" type="submit">Crear Cuenta</button>
+          {/* Barra de Navegación
+          <div className="d-flex justify-content-around mt-4 w-100">
+                <Link to="/">
+                    <button className="btn btn-dark">HOME</button>
+                </Link>
+                <Link to="/equipos/listado">
+                    <button className="btn btn-dark">EQUIPOS</button>
+                </Link>
+                <Link to="/cursos">
+                    <button className="btn btn-dark">CURSOS/PROYECTOS</button>
+                </Link>
+            </div> */}
+            <div>______________________ o ____________________</div>
+            <div >
+                <Link to="">
+                    <button className="btn btn-dark w-100 mt-2">Inicia Sesion con Google</button>
+                </Link>
+                <div>¿Ya Tienes una Cuenta?</div>
+
+                <Link to="/login">
+                    <button className="btn btn-dark mt-2">Inicia Sesion</button>
+                </Link>
+               
+            </div> 
+
         </form>
+        
     );
 };
 
