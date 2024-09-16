@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const CrearEquipo = ({usuarioId}) => {
     const [user, setUser] = useState(null);
@@ -10,6 +11,7 @@ const CrearEquipo = ({usuarioId}) => {
         uxUi: 0,
         qa: 0
     });
+    const navigate = useNavigate();
     useEffect(() => {
    // Fetch usuario
    fetch(`/api/estudiantes/${usuarioId}`)
@@ -56,12 +58,15 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
             if (!assignResponse.ok) {
                 throw new Error(`Error al asignar participantes: ${assignResponse.statusText}`);
             }
+            alert("Equipo creado con Exito!");
+            navigate('/equipos/listado');
                  
         } catch (error) {
             console.error('Error:', error);
             alert(`Ocurrió un error: ${error.message}`);
         }
     };
+
     return (
         <form onSubmit={handleSubmit} className="form-control centered-div">
          {/* cabecera (Nombre y Mensajes)

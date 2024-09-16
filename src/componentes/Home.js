@@ -83,13 +83,13 @@ const Home = ({usuarioId}) => {
                 
             )}
             <div className="container">
-            <div className="row mb-3">
+            {/* <div className="row mb-3">
                 <div className="col">
                     <Link to="/equipos">
                         <button className="btn btn-dark w-100">CREAR NUEVO EQUIPO</button>
                     </Link>
                 </div>
-            </div>
+            </div> */}
          {/* Barra de Navegación */}
          <div className="d-flex justify-content-around mt-4 w-75">
                 <Link to="/home">

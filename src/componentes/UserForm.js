@@ -49,36 +49,36 @@ const UserForm = ({ onSubmit }) => {
               <img className="mb-5 w-25 mx-auto d-block" src={Image} alt='img' /> 
             <h1 className="fw-bold text-dark">Crear una Nueva Cuenta</h1>
             </div>
-            <div className="form-group">
+            <div className="form-group mt-2">
                 <label>Nombre:</label>
-                <input className="form-control" type="text" name="nombre" value={user.nombre} onChange={handleChange} required />
+                <input className="form-control mt-2" type="text" name="nombre" value={user.nombre} onChange={handleChange} required />
             </div>
             <div className="form-group">
                 <label>Apellido:</label>
-                <input className="form-control" type="text" name="apellido" value={user.apellido} onChange={handleChange} required />
+                <input className="form-control mt-2" type="text" name="apellido" value={user.apellido} onChange={handleChange} required />
             </div>
             <div className="form-group">
                 <label>Email:</label>
-                <input className="form-control" type="email" name="email" value={user.email} onChange={handleChange} required />
+                <input className="form-control mt-2" type="email" name="email" value={user.email} onChange={handleChange} required />
             </div>
             <div className="form-group">
                 <label>Contraseña:</label>
-                <input className="form-control" type="password" name="contrasena" value={user.contrasena} onChange={handleChange} required />
+                <input className="form-control mt-2" type="password" name="contrasena" value={user.contrasena} onChange={handleChange} required />
             </div>
             <div className="form-group">
                 <label>Fecha Registro:</label>
-                <input className="form-control" type="date" name="fecha_creacion" value={user.fecha_creacion} onChange={handleChange} required />
+                <input className="form-control mt-2" type="date" name="fecha_creacion" value={user.fecha_creacion} onChange={handleChange} required />
             </div>
             <div className="form-group">
                 <label>Especialización:</label>
-                <select className="form-control" name="especializacion" value={user.especializacion} onChange={handleChange} required>
+                <select className="form-control mt-2" name="especializacion" value={user.especializacion} onChange={handleChange} required>
                     <option value="">Seleccione una especialización</option>
                     <option value="DESARROLLADOR">DESARROLLADOR</option>
                     <option value="UX_UI">UX/UI</option>
                     <option value="QA">QA</option>
                 </select>
             </div>
-            <div className="form-group">
+            <div className="form-group mt-2">
                 <label>Rol:</label>
                 <select className="form-control" name="rol" value={user.rol} onChange={handleChange} required>
                     <option value="">Seleccione un rol</option>
@@ -86,7 +86,7 @@ const UserForm = ({ onSubmit }) => {
                     <option value="MENTOR">MENTOR</option>
                 </select>
             </div>
-            <div className="form-group">
+            <div className="form-group mt-2">
                 <label>Entidad:</label>
                 <select className="form-control" name="empresa" value={user.empresa} onChange={handleChange} required>
                     <option value="">Seleccione una opción</option>
