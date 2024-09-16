@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Landing from './componentes/Landing';
 import Home from './componentes/Home';
 import EquipoForm from './componentes/EquipoForm';
 import EquipoList from './componentes/EquipoList';
@@ -35,7 +36,10 @@ const handleUserSubmit = (user) => {
 };
 
 
+
 const App = () => {
+    //hardcodeo usuario ** falta funcionalidad 
+    const usuarioId = 1;
     return (
       
         <Router>
@@ -43,13 +47,14 @@ const App = () => {
                {/* con Routes: envuelvo todas las rutas de la aplicación.
                 con Route: Defino una ruta específica */}
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/home" element={<Home usuarioId={usuarioId} />} />
                     <Route path="/inscripcion" element={<UserForm onSubmit={handleUserSubmit}/>} />
                     <Route path="/users/estudiantes" element={<EstudianteList  />} />
                     <Route path="/users/mentores" element={<MentorList  />} />
                     <Route path="/cursos" element={<CursoList />} />
-                    <Route path="/equipos" element={<EquipoForm />} />
-                    <Route path="/equipos/listado" element={<EquipoList />} />
+                    <Route path="/equipos" element={<EquipoForm usuarioId={usuarioId}/>} />
+                    <Route path="/equipos/listado" element={<EquipoList usuarioId={usuarioId} />} />
                 </Routes>
             </div>
         </Router>

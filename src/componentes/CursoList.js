@@ -14,13 +14,13 @@ const CursoList = () => { //UserList va a recibir 'role' para saber si muestra E
 
     return (  //retorna la lista de cursos **Mejorar visualmente con Boostrap
         <div>
-             <h2 className="h2 display-5 fw-bold text-dark">Cursos</h2>
+             <h2 className="h2 display-5 fw-bold text-dark card">Cursos</h2>
             <ul>
                 {cursos.map(curso => (
                     <li key={curso.id}>{curso.nombre} | {curso.descripcion} |   </li>
                 ))}
             </ul>
-            <Link to="/">
+            <Link to="/home">
                 <button className="btn btn-dark btn-lg ">Volver</button>
             </Link>
             <Link to="">

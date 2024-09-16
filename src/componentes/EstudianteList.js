@@ -22,7 +22,7 @@ const EstudianteList = () => { //UserList va a recibir 'role' para saber si mues
                     <li key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
                 ))}
             </ul>
-            <Link to="/">
+            <Link to="/home">
                         <button className="btn btn-dark ">Volver</button>
             </Link>
         </div>
