@@ -9,6 +9,7 @@ const Home = ({usuarioId}) => {
     const [cursos, setCursos] = useState([]);
     const [equipos, setEquipos] = useState([]);
     const [user, setUser] = useState(null);
+    const [visibleEquipo, setVisibleEquipo] = useState(null);
 
     useEffect(() => {
         //fetch Cursos
@@ -71,17 +72,29 @@ const Home = ({usuarioId}) => {
                 equipos.map(equipo => (
                     <div key={equipo.id} className="card">
                         <h3>{equipo.nombre}</h3>
-                        <p>Curso: {equipo.curso}</p>
-                        <p>Participantes:</p>
-                        <ul>
-                            {equipo.usuarios.map(user => (
-                                <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
-                            ))}
-                        </ul>
-                    </div>
-                ))
-                
-            )}
+                        <h5>Curso/Proyecto: {equipo.curso}</h5>
+                        {visibleEquipo === equipo.id ? (
+                        <>
+                            <h6>Participantes:</h6>
+                            <ul>
+                                {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                ))}
+                            </ul>
+                            <h6>Mentores:</h6>
+                            <ul>
+                                {equipo.usuarios.filter(user => user.rol === 'MENTOR').map(user => (
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                ))}
+                            </ul>
+                            <p className="equipo-nombre" onClick={() => setVisibleEquipo(null)}>Ver Menos...</p>
+                        </>
+                    ) : (
+                        <p className="equipo-nombre" onClick={() => setVisibleEquipo(equipo.id)}>Ver Más...</p>
+                    )}
+                </div>
+            ))
+        )}
             <div className="container">
             {/* <div className="row mb-3">
                 <div className="col">

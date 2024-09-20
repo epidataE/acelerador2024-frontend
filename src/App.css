@@ -62,6 +62,17 @@
   margin-right: 10px; /* para que quede espacio entre el label y el input */
 }
 
+.equipo-nombre {
+  cursor: pointer;
+  color:blue; /* Color inicial */
+  transition: color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+.equipo-nombre:hover {
+  color:brown; /* Color al pasar el cursor */
+  box-shadow: darkslategrey 2px /* Sombra interna */
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
