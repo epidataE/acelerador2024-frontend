@@ -31,14 +31,19 @@ const Home = ({usuarioId}) => {
     if (!user) {
         return <div>Cargando...</div>;
     }
-    console.log("Usuarios Logueado" + user.nombre + user.apellido )
+   //console.log("Usuarios Logueado" + user.nombre + user.apellido )
+
+    // Filtra los equipos en los que está el usuario
+    const equiposUsuario = equipos.filter(equipo =>
+        equipo.usuarios.some(u => u.id === usuarioId)
+    );
 
     return (
         //cabecera (Nombre y Mensajes)
         //** MENSAJES FALTA FUNCIONALIDAD */
         <div>
            <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡HOLA! {user.nombre} {user.apellido}</h3>
+            <h3 className="fw-bolder">¡HOLA {user.nombre} {user.apellido} !</h3>
             <button className="btn btn-secondary">MENSAJES</button>
             
         </div>
@@ -66,10 +71,10 @@ const Home = ({usuarioId}) => {
         <div className="d-flex align-items-center p-3">
          <h2 className="fw-bolder"> Tus Equipos</h2>
         </div>       
-            {equipos.length === 0 ? (
+            {equiposUsuario.length === 0 ? (
                 <p>No hay equipos disponibles.</p>
             ) : (
-                equipos.map(equipo => (
+                equiposUsuario.map(equipo => (
                     <div key={equipo.id} className="card">
                         <h3>{equipo.nombre}</h3>
                         <h5>Curso/Proyecto: {equipo.curso}</h5>
@@ -95,14 +100,7 @@ const Home = ({usuarioId}) => {
                 </div>
             ))
         )}
-            <div className="container">
-            {/* <div className="row mb-3">
-                <div className="col">
-                    <Link to="/equipos">
-                        <button className="btn btn-dark w-100">CREAR NUEVO EQUIPO</button>
-                    </Link>
-                </div>
-            </div> */}
+         <div className="container">
          {/* Barra de Navegación */}
          <div className="d-flex justify-content-around mt-4 w-75">
                 <Link to="/home">

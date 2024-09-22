@@ -30,7 +30,7 @@ const EquipoList = ({usuarioId}) => {
         //** MENSAJES FALTA FUNCIONALIDAD */
         <div>
            <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡ HOLA ! {user.nombre} {user.apellido}</h3>
+            <h3 className="fw-bolder">¡ HOLA {user.nombre} {user.apellido}  !</h3>
             <button className="btn btn-secondary">MENSAJES</button>
             
         </div>
@@ -42,7 +42,7 @@ const EquipoList = ({usuarioId}) => {
             </div>
         {/* filtrar FALTA FUNCIONALIDAD */}
         <div className="d-flex justify-content-between align-items-center p-3">
-            <h2 className="fw-bolder"> Tus Equipos</h2>
+            <h2 className="fw-bolder"> Todos Los Equipos</h2>
             <button className="btn btn-secondary">FILTRAR</button>
         </div>
         {equipos.length === 0 ? (

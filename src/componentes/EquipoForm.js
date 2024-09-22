@@ -47,6 +47,7 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
                 throw new Error(`Error al crear el equipo: ${createResponse.statusText}`);
             }
             const createData = await createResponse.json();
+
             // Asignar participantes al equipo
             const assignResponse = await fetch(`/api/equipos/asignar/${createData.id}/${team.desarrolladores}/${team.uxUi}/${team.qa}`, {
                 method: 'POST',
@@ -54,17 +55,23 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
                     'Content-Type': 'application/json',
                 },
             });
-    
-            if (!assignResponse.ok) {
-                throw new Error(`Error al asignar participantes: ${assignResponse.statusText}`);
-            }
-            alert("Equipo creado con Exito!");
-            navigate('/equipos/listado');
-                 
-        } catch (error) {
-            console.error('Error:', error);
-            alert(`Ocurrió un error: ${error.message}`);
+    if (!assignResponse.ok) {
+            // Eliminar el equipo si no se pueden asignar participantes
+            await fetch(`/api/equipos/${createData.id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            throw new Error(`Error al asignar participantes: ${assignResponse.statusText}`);
         }
+        alert("¡Equipo creado con éxito!");
+        navigate('/equipos/listado');
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert("No hay suficientes participantes: No se ha podido crear el Equipo");
+    }
     };
 
     return (
@@ -73,7 +80,7 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
          MENSAJES FALTA FUNCIONALIDAD  */} 
          <div>
            <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡ HOLA ! {user.nombre} {user.apellido}</h3>
+            <h3 className="fw-bolder">¡ HOLA  {user.nombre} {user.apellido} !</h3>
             <button className="btn btn-secondary">MENSAJES</button>
             
         </div>
