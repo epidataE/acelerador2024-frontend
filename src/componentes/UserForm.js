@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Image from '../assets/LogoFigma.png';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg';
 
 const UserForm = ({ onSubmit }) => {
     const [user, setUser] = useState({
@@ -40,6 +40,7 @@ const UserForm = ({ onSubmit }) => {
         e.preventDefault();
         console.log(user);
         onSubmit(user);
+        alert('¡Usuario creado con éxito!');
         navigate('/');
     };
 
