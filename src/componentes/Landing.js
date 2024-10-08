@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Image from '../assets/LogoFigma.png'; 
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 
 

@@ -10,7 +10,7 @@ const Home = ({usuarioId}) => {
     const [equipos, setEquipos] = useState([]);
     const [user, setUser] = useState(null);
     const [visibleEquipo, setVisibleEquipo] = useState(null);
-
+  
     useEffect(() => {
         //fetch Cursos
     fetch(`/api/cursos`)  
@@ -57,14 +57,17 @@ const Home = ({usuarioId}) => {
          <div className="align-items-center p-3">
          <h2 className="fw-bolder"> Tus Cursos/Proyectos</h2>
          </div>
-         {cursos.map(cursos => (
+         {cursos.length === 0 ? (
+               <h5 className="d-flex align-items-center p-3">AUN NO ESTAAS REGISTRADO EN NINGUN CURSO/PROYECTO</h5>
+            ) : (
+         cursos.map(cursos => (
         <div key={cursos.id} className="card">
             <h3>{cursos.nombre}</h3>  
             <ul>   
                 <li key={cursos.id}> {cursos.descripcion}</li>
                 </ul>
                 </div>
-               ))}
+               )))}
 
 
         {/* EQUIPOS */}
@@ -72,7 +75,7 @@ const Home = ({usuarioId}) => {
          <h2 className="fw-bolder"> Tus Equipos</h2>
         </div>       
             {equiposUsuario.length === 0 ? (
-                <p>No hay equipos disponibles.</p>
+                <h5 className="d-flex align-items-center p-3">AUN NO TIENES EQUIPOS ASIGNADOS</h5>
             ) : (
                 equiposUsuario.map(equipo => (
                     <div key={equipo.id} className="card">

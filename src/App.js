@@ -1,6 +1,8 @@
 import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './componentes/Landing';
+import Login from './componentes/Login';
 import Home from './componentes/Home';
 import EquipoForm from './componentes/EquipoForm';
 import EquipoList from './componentes/EquipoList';
@@ -11,12 +13,14 @@ import CursoList from './componentes/CursoList';
 
 import './App.css';
 
-const handleUserSubmit = (user) => {
-    const { empresa, ...userData } = user;
-    //const empresaId = parseInt(empresa, 10); // Convierte el ID de empresa a Long (entero)
-    console.log(`Rol: ${user.rol}, Empresa: ${empresa}`);
+const App = () => {
+    const [usuarioId, setUsuarioId] = useState(null); // para manejar el id del usuario logueado
     
-    const url = user.rol === 'ESTUDIANTE' ? `/api/estudiantes?empresaId=${empresa}` : `/api/mentores?empresaId=${empresa}`;
+    const handleUserSubmit = (user) => {
+        const { empresa, ...userData } = user;   
+        console.log(`Rol: ${user.rol}, Empresa: ${empresa}`);
+    
+        const url = user.rol === 'ESTUDIANTE' ? `/api/estudiantes?empresaId=${empresa}` : `/api/mentores?empresaId=${empresa}`;
    
    // console.log("UserData: " + JSON.stringify(userData));
     fetch(url, {
@@ -26,20 +30,20 @@ const handleUserSubmit = (user) => {
         },
         
         body: JSON.stringify(userData)
-    })
+    }) 
     .then(response => response.json())
     .then(data => {
-        console.log('Success:', data);
-        alert('Usuario creado con éxito');
-    })
+       console.log('Success:', data);
+       // alert('Usuario creado con éxito');
+    } 
+   )
     .catch(error => console.error('Error:', error));
 };
+  
+    const handleLogin = (id) => {
+        setUsuarioId(id); // seteo el ID
+    };
 
-
-
-const App = () => {
-    //hardcodeo usuario ** falta funcionalidad 
-    const usuarioId = 154;
     return (
       
         <Router>
@@ -48,6 +52,7 @@ const App = () => {
                 con Route: Defino una ruta específica */}
                 <Routes>
                     <Route path="/" element={<Landing />} />
+                    <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/home" element={<Home usuarioId={usuarioId} />} />
                     <Route path="/inscripcion" element={<UserForm onSubmit={handleUserSubmit}/>} />
                     <Route path="/users/estudiantes" element={<EstudianteList  />} />
