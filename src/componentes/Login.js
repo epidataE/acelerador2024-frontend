@@ -26,11 +26,17 @@ const Login = ({ onLogin }) => {
 
             const data = await response.json();
             console.log(data)
-            const usuarioID = data.id; //
-            console.log("usuarioID:" + usuarioID + email+contrasena)
-            onLogin(usuarioID);
+            const usuarioID = data.id;
+            const rol = data.rol //
+            console.log("usuarioID:" + usuarioID + email+contrasena, rol)
+            onLogin(usuarioID, rol);
 
-            navigate(`/home?usuarioID=${usuarioID}`);
+            // Navegar según el rol
+            if (rol === 'ADMIN') {
+                navigate(`/admin?usuarioID=${usuarioID}`);
+            } else {
+                navigate(`/home?usuarioID=${usuarioID}`);
+            }
         } catch (error) {
             alert(error.message);
         }
