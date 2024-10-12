@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 const CursoList = () => { //UserList va a recibir 'role' para saber si muestra Estudiantes o mentores
 
@@ -13,19 +14,31 @@ const CursoList = () => { //UserList va a recibir 'role' para saber si muestra E
     }, []);
 
     return (  //retorna la lista de cursos **Mejorar visualmente con Boostrap
+        <div>  
+        <div className="d-flex justify-content-between align-items-center p-3">
+        <img src={Image} alt='img' /> 
+        <h3 className="fw-bolder ">PANEL DE ADMINISTRACION</h3>        
+        <Link to="/"> <button className="btn btn-secondary">SALIR</button> </Link>
+        </div> 
+        <hr /> 
+       
         <div>
-             <h2 className="h2 display-5 fw-bold text-dark card">Cursos</h2>
+             <h3 className="pfw-bolder ms-5">Cursos</h3>
+             <hr/>
             <ul>
                 {cursos.map(curso => (
-                    <li key={curso.id}>{curso.nombre} | {curso.descripcion} |   </li>
+                    <li className= "card" key={curso.id}>{curso.nombre} | {curso.descripcion} |   </li>
                 ))}
             </ul>
-            <Link to="/home">
-                <button className="btn btn-dark btn-lg ">Volver</button>
-            </Link>
-            <Link to="">
-            <button className="btn btn-dark btn-lg ">Crear Curso</button>
-            </Link>
+
+           </div>
+            <hr />
+           {/* Barra de Navegación */}
+          <div className="centered-div">
+                <Link to="/admin">
+                    <button className="btn btn-dark mx-5 w-50">VOLVER</button>
+                </Link>
+            </div><hr />      
         </div>
     );
 

@@ -12,6 +12,8 @@ import UserForm from './componentes/UserForm';
 import EstudianteList from './componentes/EstudianteList';
 import MentorList from './componentes/MentorList';
 import CursoList from './componentes/CursoList';
+import CursoForm from './componentes/CursoForm';
+import InscripcionForm from './componentes/InscripcionForm';
 
 import './App.css';
 
@@ -70,10 +72,12 @@ const App = () => {
                     <Route path="/admin" element={<HomeAdmin usuarioId={usuarioId}/>}/>
                     <Route path="/home" element={<Home usuarioId={usuarioId} />} />
                     <Route path="/mensajes" element={<Mensajes  usuarioId={usuarioId} />} />
-                    <Route path="/inscripcion" element={<UserForm onSubmit={handleUserSubmit}/>} />
+                    <Route path="/registro" element={<UserForm onSubmit={handleUserSubmit}/>} />
                     <Route path="/users/estudiantes" element={<EstudianteList  />} />
                     <Route path="/users/mentores" element={<MentorList  />} />
                     <Route path="/cursos" element={<CursoList />} />
+                    <Route path="/cursos/nuevo" element={<CursoForm />} />
+                    <Route path="/cursos/inscripcion" element={<InscripcionForm usuarioId={usuarioId}/>} />
                     <Route path="/equipos" element={<EquipoForm usuarioId={usuarioId}/>} />
                     <Route path="/equipos/listado" element={<EquipoList usuarioId={usuarioId} />} />
                 </Routes>

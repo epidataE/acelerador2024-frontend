@@ -73,6 +73,14 @@
   box-shadow: darkslategrey 2px /* Sombra interna */
 }
 
+.recuadro {
+  border: 2px solid gray; /* Borde gris de 2 píxeles */
+  padding: 15px; /* Espaciado interno */
+  margin: 20px; /* Margen externo */
+  border-radius: 5px; /* Esquinas redondeadas */
+  background-color: #f9f9f9; /* Color de fondo claro */
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

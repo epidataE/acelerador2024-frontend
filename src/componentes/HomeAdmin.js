@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 
 const HomeAdmin = ({usuarioId}) => {
@@ -31,90 +32,48 @@ const HomeAdmin = ({usuarioId}) => {
     }
    console.log("Usuarios Logueado" + admin.nombre  )
 
-    // Filtra los equipos en los que está el usuario
-    // const equiposUsuario = equipos.filter(equipo =>
-    //     equipo.usuarios.some(u => u.id === usuarioId)
-    // );
+    
 
     return (
-        //cabecera (Nombre y Mensajes)
-        //** MENSAJES FALTA FUNCIONALIDAD */
-        <div>
-           <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡HOLA {admin.nombre} !</h3>            
-            <Link to="/mensajes"> <button className="btn btn-secondary">MENSAJES</button> </Link>
-            
-        </div>
-        {/* buscador FALTA FUNCIONALIDAD */}
-        <div className="row mt-3 justify-content-center">
-        <div className="col-md-6 col-lg-4">
-                    <input type="text" className="form-control" placeholder="BUSCADOR" />
-                </div>
-            </div>
+        <div>  
+        <div className="d-flex justify-content-between align-items-center p-3">
+        <img src={Image} alt='img' /> 
+        <h3 className="fw-bolder ">PANEL DE ADMINISTRACION</h3>        
+        <Link to="/"> <button className="btn btn-secondary">SALIR</button> </Link>
+        </div> 
+        <hr />     
          {/* CURSOS */}
-         <div className="align-items-center p-3">
-         <h2 className="fw-bolder"> Tus Cursos/Proyectos</h2>
-         </div>
-         {cursos.length === 0 ? (
-               <h5 className="d-flex align-items-center p-3">AUN NO ESTAS REGISTRADO EN NINGUN CURSO/PROYECTO</h5>
-            ) : (
-         cursos.map(cursos => (
-        <div key={cursos.id} className="card">
-            <h3>{cursos.nombre}</h3>  
-            <ul>   
-                <li key={cursos.id}> {cursos.descripcion}</li>
-                </ul>
-                </div>
-               )))}
-
-
-        {/* EQUIPOS */}
-        <div className="d-flex align-items-center p-3">
-         <h2 className="fw-bolder"> Tus Equipos</h2>
-        </div>       
-            {/* {equiposUsuario.length === 0 ? (
-                <h5 className="d-flex align-items-center p-3">AUN NO TIENES EQUIPOS ASIGNADOS</h5>
-            ) : (
-                equiposUsuario.map(equipo => (
-                    <div key={equipo.id} className="card">
-                        <h3>{equipo.nombre}</h3>
-                        <h5>Curso/Proyecto: {equipo.curso}</h5>
-                        {visibleEquipo === equipo.id ? (
-                        <>
-                            <h6>Participantes:</h6>
-                            <ul>
-                                {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
-                                ))}
-                            </ul>
-                            <h6>Mentores:</h6>
-                            <ul>
-                                {equipo.usuarios.filter(user => user.rol === 'MENTOR').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
-                                ))}
-                            </ul>
-                            <p className="equipo-nombre" onClick={() => setVisibleEquipo(null)}>Ver Menos...</p>
-                        </>
-                    ) : (
-                        <p className="equipo-nombre" onClick={() => setVisibleEquipo(equipo.id)}>Ver Más...</p>
-                    )}
-                </div>
-            ))
-        )} */}
-         <div className="container">
-         {/* Barra de Navegación */}
-         <div className="d-flex justify-content-around mt-4 w-75">
-                <Link to="/home">
-                    <button className="btn btn-dark">HOME</button>
+        
+        <hr />
+        <div className="centered-div roboto-font">
+            <nav className="my-3">
+                <Link to="/users/estudiantes">
+                    <button className="btn btn-dark btn-lg custom-button">Ver Estudiantes</button>
                 </Link>
-                <Link to="/equipos/listado">
-                    <button className="btn btn-dark">EQUIPOS</button>
+            </nav>
+            <nav className="my-3">
+                <Link to="/users/mentores">
+                    <button className="btn btn-dark btn-lg custom-button">Ver Mentores</button>
                 </Link>
+            </nav>
+            <nav className="my-3">
                 <Link to="/cursos">
-                    <button className="btn btn-dark">CURSOS/PROYECTOS</button>
+                    <button className="btn btn-dark btn-lg custom-button">Ver Proyectos</button>
                 </Link>
+            </nav>
+            <nav className="my-3">
+                <Link to="/cursos/nuevo">
+                    <button className="btn btn-dark btn-lg custom-button">Nuevo Proyecto</button>
+                </Link>
+            </nav>
+            <nav className="my-3">
+                <Link to="/equipos/listado">
+                    <button className="btn btn-dark btn-lg custom-button">Ver Equipos</button>
+                </Link>
+            </nav>
             </div>
-            </div>
+       
+            <hr/>
             </div>
        
       

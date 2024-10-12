@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 
+
 const Home = ({usuarioId}) => {
     const [cursos, setCursos] = useState([]);
     const [equipos, setEquipos] = useState([]);
@@ -34,30 +35,28 @@ const Home = ({usuarioId}) => {
     const equiposUsuario = equipos.filter(equipo =>
         equipo.usuarios.some(u => u.id === usuarioId)
     );
+     // Filtra los cursos/proyectos en los que está el usuario
+     const cursosUsuario = cursos.filter(cursos =>
+        cursos.usuarios.some(u => u.id === usuarioId)
+    );
 
     return (
         //cabecera (Nombre y Mensajes)
-        //** MENSAJES FALTA FUNCIONALIDAD */
+       
         <div>
-           <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡HOLA {user.nombre} {user.apellido} !</h3>            
-            <Link to="/mensajes"> <button className="btn btn-secondary">MENSAJES</button> </Link>
-            
+           <div className="recuadro d-flex justify-content-between align-items-center p-3">
+            <h2 className="fw-bolder">¡HOLA   {user.nombre} {user.apellido} !</h2>                        
+            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link>            
         </div>
-        {/* buscador FALTA FUNCIONALIDAD */}
-        <div className="row mt-3 justify-content-center">
-        <div className="col-md-6 col-lg-4">
-                    <input type="text" className="form-control" placeholder="BUSCADOR" />
-                </div>
-            </div>
+       
          {/* CURSOS */}
          <div className="align-items-center p-3">
-         <h2 className="fw-bolder"> Tus Cursos/Proyectos</h2>
+         <h2 className="fw-bolder"> Tus Proyectos</h2>
          </div>
          {cursos.length === 0 ? (
-               <h5 className="d-flex align-items-center p-3">AUN NO ESTAAS REGISTRADO EN NINGUN CURSO/PROYECTO</h5>
+               <h5 className="d-flex align-items-center p-3">AUN NO ESTAS REGISTRADO EN NINGUN PROYECTO</h5>
             ) : (
-         cursos.map(cursos => (
+         cursosUsuario.map(cursos => (
         <div key={cursos.id} className="card">
             <h3>{cursos.nombre}</h3>  
             <ul>   
@@ -65,7 +64,6 @@ const Home = ({usuarioId}) => {
                 </ul>
                 </div>
                )))}
-
 
         {/* EQUIPOS */}
         <div className="d-flex align-items-center p-3">
@@ -79,7 +77,7 @@ const Home = ({usuarioId}) => {
                         <h3>{equipo.nombre}</h3>
                         <h5>Curso/Proyecto: {equipo.curso}</h5>
                         {visibleEquipo === equipo.id ? (
-                        <>
+                             <>
                             <h6>Participantes:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
@@ -100,6 +98,7 @@ const Home = ({usuarioId}) => {
                 </div>
             ))
         )}
+        <hr/>
          <div className="container">
          {/* Barra de Navegación */}
          <div className="d-flex justify-content-around mt-4 w-75">
@@ -109,11 +108,12 @@ const Home = ({usuarioId}) => {
                 <Link to="/equipos/listado">
                     <button className="btn btn-dark">EQUIPOS</button>
                 </Link>
-                <Link to="/cursos">
-                    <button className="btn btn-dark">CURSOS/PROYECTOS</button>
+                <Link to="/cursos/inscripcion">
+                    <button className="btn btn-dark">PROYECTOS</button>
                 </Link>
             </div>
             </div>
+            <hr/>
             </div>
        
       

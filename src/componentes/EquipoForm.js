@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link} from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 const CrearEquipo = ({usuarioId}) => {
     const [user, setUser] = useState(null);
@@ -14,7 +15,7 @@ const CrearEquipo = ({usuarioId}) => {
     const navigate = useNavigate();
     useEffect(() => {
    // Fetch usuario
-   fetch(`/api/estudiantes/${usuarioId}`)
+   fetch(`/api/admin/${usuarioId}`)
         .then(response => response.json())
         .then(data => setUser(data));       
    }, [usuarioId]);
@@ -22,7 +23,7 @@ const CrearEquipo = ({usuarioId}) => {
    if (!user) {
     return <div>Cargando...</div>;
 }
-console.log("Usuarios Logueado" + user.nombre + user.apellido )
+console.log("Usuarios Logueado" + user.nombre  )
 
     const handleTeamChange = (e) => {
         const { name, value } = e.target;
@@ -78,14 +79,12 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
         <form onSubmit={handleSubmit} className="form-control centered-div">
          {/* cabecera (Nombre y Mensajes)
          MENSAJES FALTA FUNCIONALIDAD  */} 
-         <div>
-           <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡ HOLA  {user.nombre} {user.apellido} !</h3>
-            <button className="btn btn-secondary">MENSAJES</button>
-            
-        </div>
-            
-        </div>
+         <div className="d-flex justify-content-between align-items-center p-3">
+        <img src={Image} alt='img' /> 
+        <h3 className="fw-bolder ">PANEL DE ADMINISTRACION</h3>        
+        <Link to="/"> <button className="btn btn-secondary">SALIR</button> </Link>
+        </div> 
+        <hr />    
          
         <div className="container d-flex justify-content-center vh-100">
 
@@ -149,19 +148,21 @@ console.log("Usuarios Logueado" + user.nombre + user.apellido )
                     </fieldset>
                 </div>
                 <button className="btn btn-dark mt-4" type="submit">CREAR NUEVO EQUIPO</button>
+                <hr />
            {/* Barra de Navegación */}
           <div className="d-flex justify-content-around mt-4 w-100">
-                <Link to="/home">
-                    <button className="btn btn-dark">HOME</button>
+                <Link to="/admin">
+                    <button className="btn btn-dark mx-5">HOME</button>
                 </Link>
                 <Link to="/equipos/listado">
-                    <button className="btn btn-dark">EQUIPOS</button>
+                    <button className="btn btn-dark mx-5 ">EQUIPOS</button>
                 </Link>
                 <Link to="/cursos">
-                    <button className="btn btn-dark">CURSOS/PROYECTOS</button>
+                    <button className="btn btn-dark mx-5">PROYECTOS</button>
                 </Link>
+            </div><hr />
             </div>
-            </div></div>
+            </div>
                 </form>
                 
           
