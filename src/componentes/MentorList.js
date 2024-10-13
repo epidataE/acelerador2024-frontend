@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 const MentorList = ({ role }) => { //UserList va a recibir 'role' para saber si muestra Estudiantes o mentores
 
@@ -13,16 +14,29 @@ const MentorList = ({ role }) => { //UserList va a recibir 'role' para saber si 
     }, [role]);
 
     return (  //retorna la lista de Estudiantes / Mentores segun el valor de role **Mejorar visualmente con Boostrap
-        <div>
-            <h2 className="h2 display-5 fw-bold text-dark">{role === 'mentores' ? 'Mentores' : 'Estudiantes'} </h2>
+        <div>  
+        <div className="d-flex justify-content-between align-items-center p-3">
+        <img src={Image} alt='img' /> 
+        <h3 className="fw-bolder ">PANEL DE ADMINISTRACION</h3>        
+        <Link to="/"> <button className="btn btn-secondary">SALIR</button> </Link>
+        </div> 
+        <hr /> 
+       <div>
+            <h3 className="pfw-bolder ms-5">Mentores </h3>
+            <hr/>
             <ul>
                 {users.map(user => (
-                    <li key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
+                    <li className= "card" key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
                 ))}
             </ul>
-            <Link to="/home">
-                        <button className="btn btn-dark ">Volver</button>
-            </Link>
+            </div>
+            <hr />
+           {/* Barra de Navegación */}
+          <div className="centered-div">
+                <Link to="/admin">
+                    <button className="btn btn-dark mx-5 w-50">VOLVER</button>
+                </Link>
+            </div><hr />      
         </div>
     );
 };

@@ -43,6 +43,14 @@
   list-style-type: none;
   padding: 0;
 }
+.curso-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+}
+
 
 .form-control {
   
@@ -71,6 +79,14 @@
 .equipo-nombre:hover {
   color:brown; /* Color al pasar el cursor */
   box-shadow: darkslategrey 2px /* Sombra interna */
+}
+
+.recuadro {
+  border: 2px solid gray; /* Borde gris de 2 píxeles */
+  padding: 15px; /* Espaciado interno */
+  margin: 20px; /* Margen externo */
+  border-radius: 5px; /* Esquinas redondeadas */
+  background-color: #f9f9f9; /* Color de fondo claro */
 }
 
 
