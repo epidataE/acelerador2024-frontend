@@ -26,32 +26,45 @@ const Login = ({ onLogin }) => {
 
             const data = await response.json();
             console.log(data)
-            const usuarioID = data.id; //
-            console.log("usuarioID:" + usuarioID + email+contrasena)
-            onLogin(usuarioID);
+            const usuarioID = data.id;
+            const rol = data.rol //
+            console.log("usuarioID:" + usuarioID + email+contrasena, rol)
+            onLogin(usuarioID, rol);
 
-            navigate(`/home?usuarioID=${usuarioID}`);
+            // Navegar según el rol
+            if (rol === 'ADMIN') {
+                navigate(`/admin?usuarioID=${usuarioID}`);
+            } else {
+                navigate(`/home?usuarioID=${usuarioID}`);
+            }
         } catch (error) {
             alert(error.message);
         }
     };
 
     return (
-        <>
-            <div className="centered-div roboto-font">
-                <h1 className="h1 display-4 fw-bold text-dark mt-5">¡Te damos la Bienvenida!</h1>
-                <img className="mb-5 w-15 mx-auto d-block mt-5" src={Image} alt='img' />
-                <form id="loginForm" onSubmit={handleSubmit}>
-                    <h2>Iniciar Sesión</h2>
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                    <label htmlFor="contrasena">Contraseña:</label>
-                    <input type="contrasena" id="contrasena" name="contrasena" required />
-                    <button type="submit">Login</button>
-                </form>
+        <div className="container mt-5">
+            <div className="d-flex justify-content-center">
+                <div className="card p-4 shadow-lg w-75">
+                    <div className="text-center mb-4">
+                        <h1 className="display-4 fw-bold">¡Te damos la Bienvenida!</h1>
+                        <img className="mb-4 w-50" src={Image} alt='img' />
+                    </div>
+                    <form id="loginForm" onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input className="form-control mt-2" type="email" 
+                            placeholder="INGRESE SU EMAIL" id="email" name="email" required />
+                        </div>
+                        <div className="form-group mt-3">
+                            {/* <label htmlFor="contrasena">Contraseña:</label> */}
+                            <input className="form-control mt-2" type="password" 
+                            placeholder="INGRESE SU CONTRASEÑA" id="contrasena" name="contrasena" required />
+                        </div>
+                        <button className="btn btn-dark w-100 mt-3" type="submit">Login</button>
+                    </form>
+                </div>
             </div>
-        </>
+        </div>
     );
 };
-
 export default Login;

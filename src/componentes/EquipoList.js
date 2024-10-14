@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 const EquipoList = ({usuarioId}) => {
     const [equipos, setEquipos] = useState([]);
@@ -27,26 +28,23 @@ const EquipoList = ({usuarioId}) => {
 
     return (
         //cabecera (Nombre y Mensajes)
-        //** MENSAJES FALTA FUNCIONALIDAD */
+        <div>  
+        <div className="d-flex justify-content-between align-items-center p-3">
+        <img src={Image} alt='img' /> 
+        <h3 className="fw-bolder ">PANEL DE ADMINISTRACION</h3>        
+        <Link to="/"> <button className="btn btn-secondary">SALIR</button> </Link>
+        </div> 
+        <hr /> 
+       
         <div>
-           <div className="d-flex justify-content-between align-items-center p-3">
-            <h3 className="fw-bolder">¡ HOLA {user.nombre} {user.apellido}  !</h3>
-            <button className="btn btn-secondary">MENSAJES</button>
+             <h3 className="fw-bolder mx-4" > Todos Los Equipos</h3>
+             <hr/>
+       
+        
             
         </div>
-        {/* buscador FALTA FUNCIONALIDAD */}
-        <div className="row mt-3 justify-content-center">
-        <div className="col-md-6 col-lg-4">
-                    <input type="text" className="form-control" placeholder="BUSCADOR" />
-                </div>
-            </div>
-        {/* filtrar FALTA FUNCIONALIDAD */}
-        <div className="d-flex justify-content-between align-items-center p-3">
-            <h2 className="fw-bolder"> Todos Los Equipos</h2>
-            <button className="btn btn-secondary">FILTRAR</button>
-        </div>
         {equipos.length === 0 ? (
-                <p>No hay equipos disponibles.</p>
+                <h5 className='mx-4'>No hay equipos disponibles.</h5>
             ) : (
                 equipos.map(equipo => (
                     <div key={equipo.id} className="card">
@@ -74,28 +72,19 @@ const EquipoList = ({usuarioId}) => {
                 </div>
             ))
         )}
-         <div className="container">
-            <div className="row mb-3">
-                <div className="col">
-                <Link to="/equipos">
-                    <button className="btn btn-dark w-100">CREAR NUEVO EQUIPO</button>
+        <hr/>
+        <hr />
+           {/* Barra de Navegación */}
+          <div className="centered-div">
+          <Link to="/equipos">
+                    <button className="btn btn-dark mx-5 my-3 w-50">CREAR NUEVO EQUIPO</button>
                 </Link>
-                </div>
-            </div>
-            {/* Barra de Navegación */}
-            <div className="d-flex justify-content-around mt-4 w-75">
-                <Link to="/home">
-                    <button className="btn btn-dark">HOME</button>
+                <Link to="/admin">
+                    <button className="btn btn-dark mx-5 w-50">VOLVER</button>
                 </Link>
-                <Link to="/equipos/listado">
-                    <button className="btn btn-dark">EQUIPOS</button>
-                </Link>
-                <Link to="/cursos">
-                    <button className="btn btn-dark">CURSOS/PROYECTOS</button>
-                </Link>
-            </div>
+               
+            </div><hr />      
         </div>
-       </div> 
     );
 };
 
