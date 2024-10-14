@@ -3,9 +3,6 @@ import { Link } from 'react-router-dom';
 import Image from '../assets/POLO-IT-Buenos-Aires-sin fondo 1.svg'; 
 
 
-
-
-
 const Landing = () => {
     return (
         <div className="centered-div roboto-font">
@@ -13,7 +10,7 @@ const Landing = () => {
             <img className="mb-5 w-15 mx-auto d-block mt-5" src={Image} alt='img' />
                  
             <nav className="my-3">
-                <Link to="/inscripcion">
+                <Link to="/registro">
                     <button className="btn btn-dark btn-lg custom-button w-50">Crear Nueva Cuenta</button>
                 </Link>
             </nav>

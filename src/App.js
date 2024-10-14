@@ -4,12 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './componentes/Landing';
 import Login from './componentes/Login';
 import Home from './componentes/Home';
+import HomeAdmin from './componentes/HomeAdmin'
+import Mensajes from './componentes/Mensajes';
 import EquipoForm from './componentes/EquipoForm';
 import EquipoList from './componentes/EquipoList';
 import UserForm from './componentes/UserForm';
 import EstudianteList from './componentes/EstudianteList';
 import MentorList from './componentes/MentorList';
 import CursoList from './componentes/CursoList';
+import CursoForm from './componentes/CursoForm';
+import InscripcionForm from './componentes/InscripcionForm';
 
 import './App.css';
 
@@ -20,7 +24,19 @@ const App = () => {
         const { empresa, ...userData } = user;   
         console.log(`Rol: ${user.rol}, Empresa: ${empresa}`);
     
-        const url = user.rol === 'ESTUDIANTE' ? `/api/estudiantes?empresaId=${empresa}` : `/api/mentores?empresaId=${empresa}`;
+        let url;
+
+        // Determinar la URL según el rol
+        if (user.rol === 'ESTUDIANTE') {
+            url = `/api/estudiantes?empresaId=${empresa}`;
+        } else if (user.rol === 'MENTOR') {
+            url = `/api/mentores?empresaId=${empresa}`;
+        } else if (user.rol === 'ADMIN') {
+            url = '/api/admin'; // Endpoint para administradores
+        } else {
+            console.error('Rol no válido');
+            return; // Salir si el rol no es válido
+        }
    
    // console.log("UserData: " + JSON.stringify(userData));
     fetch(url, {
@@ -53,11 +69,15 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Landing />} />
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
+                    <Route path="/admin" element={<HomeAdmin usuarioId={usuarioId}/>}/>
                     <Route path="/home" element={<Home usuarioId={usuarioId} />} />
-                    <Route path="/inscripcion" element={<UserForm onSubmit={handleUserSubmit}/>} />
+                    <Route path="/mensajes" element={<Mensajes  usuarioId={usuarioId} />} />
+                    <Route path="/registro" element={<UserForm onSubmit={handleUserSubmit}/>} />
                     <Route path="/users/estudiantes" element={<EstudianteList  />} />
                     <Route path="/users/mentores" element={<MentorList  />} />
                     <Route path="/cursos" element={<CursoList />} />
+                    <Route path="/cursos/nuevo" element={<CursoForm />} />
+                    <Route path="/cursos/inscripcion" element={<InscripcionForm usuarioId={usuarioId}/>} />
                     <Route path="/equipos" element={<EquipoForm usuarioId={usuarioId}/>} />
                     <Route path="/equipos/listado" element={<EquipoList usuarioId={usuarioId} />} />
                 </Routes>
