@@ -76,9 +76,13 @@ const EquipoList = ({usuarioId}) => {
         <hr />
            {/* Barra de Navegación */}
           <div className="centered-div">
+          <Link to="/equipos">
+                    <button className="btn btn-dark mx-5 my-3 w-50">CREAR NUEVO EQUIPO</button>
+                </Link>
                 <Link to="/admin">
                     <button className="btn btn-dark mx-5 w-50">VOLVER</button>
                 </Link>
+               
             </div><hr />      
         </div>
     );

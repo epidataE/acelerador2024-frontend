@@ -43,6 +43,14 @@
   list-style-type: none;
   padding: 0;
 }
+.curso-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin: 10px 0;
+}
+
 
 .form-control {
   

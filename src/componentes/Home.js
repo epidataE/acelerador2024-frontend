@@ -101,15 +101,15 @@ const Home = ({usuarioId}) => {
         <hr/>
          <div className="container">
          {/* Barra de Navegación */}
-         <div className="d-flex justify-content-around mt-4 w-75">
+         <div className="d-flex justify-content-center mt-4  w-75">
                 <Link to="/home">
                     <button className="btn btn-dark">HOME</button>
                 </Link>
-                <Link to="/equipos/listado">
+                {/* <Link to="/equipos/listado">
                     <button className="btn btn-dark">EQUIPOS</button>
-                </Link>
+                </Link> */}
                 <Link to="/cursos/inscripcion">
-                    <button className="btn btn-dark">PROYECTOS</button>
+                    <button className="btn btn-dark mx-5">INSCRIPCION A PROYECTOS</button>
                 </Link>
             </div>
             </div>

@@ -6,12 +6,48 @@ const CursoList = () => { //UserList va a recibir 'role' para saber si muestra E
 
     const [cursos, setCursos] = useState([]); //useState para manejar los estados de users (users: mi lista de usuarios- inicilmente = array vacio / setUsers = funcion para actualizar Users )
 
-    useEffect(() => {   //useEffect se ejecutacada vez que cambia el valor de 'role' (Estudiantes/ Mentores)
-        //Realiza una solicitud a -/api/${role}-, convierte la respuesta a JSON y actualiza users con los datos recibidos.
-        fetch(`/api/cursos`)  
-            .then(response => response.json())
-            .then(data => setCursos(data));
+    const fetchCursos = async () => {
+        const response = await fetch('/api/cursos');
+        const data = await response.json();
+        setCursos(data);
+    };
+
+    useEffect(() => {
+        fetchCursos();
     }, []);
+    
+
+    //para modificar el estado del proyecto a Activo o No Activo
+    const handleToggleStatus = async (cursoId, cursoNombre, cursoDescripcion, currentStatus) => {
+        const newStatus = !currentStatus;
+
+        try {
+            const response = await fetch(`/api/cursos/${cursoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    nombre: cursoNombre,
+                    descripcion: cursoDescripcion,
+                    estado: newStatus }),
+            });
+
+            if (response.ok) {
+                setCursos(prevCursos => 
+                    prevCursos.map(curso =>
+                        curso.id === cursoId ? { ...curso, status: newStatus } : curso
+                    )
+                );
+                alert('Estado del curso actualizado con éxito');
+                fetchCursos(); // Recarga la lista de cursos después de la actualización
+            } else {
+                alert('Error al actualizar el estado del curso');
+            }
+        } catch (error) {
+            alert('Error al actualizar el estado del curso');
+        }
+    };
 
     return (  //retorna la lista de cursos **Mejorar visualmente con Boostrap
         <div>  
@@ -25,12 +61,19 @@ const CursoList = () => { //UserList va a recibir 'role' para saber si muestra E
         <div>
              <h3 className="pfw-bolder ms-5">Cursos</h3>
              <hr/>
-            <ul>
-                {cursos.map(curso => (
-                    <li className= "card" key={curso.id}>{curso.nombre} | {curso.descripcion} |   </li>
-                ))}
-            </ul>
-
+             <ul>
+                    {cursos.map(curso => (
+                        <li className="card curso-item" key={curso.id}>
+                        {curso.nombre} | {curso.descripcion} | {curso.estado ? 'PROYECTO ACTIVO' : 'PROYECTO NO ACTIVO'}
+                        <button 
+                            onClick={() => handleToggleStatus(curso.id, curso.nombre, curso.descripcion, curso.estado)}
+                            className={`btn ${curso.estado ? 'btn-danger' : 'btn-success'}`}
+                        >
+                            {curso.estado ? 'CAMBIAR A NO ACTIVO' : 'CAMBIAR A ACTIVO'}
+                        </button>
+                    </li>
+                    ))}
+                </ul>
            </div>
             <hr />
            {/* Barra de Navegación */}
