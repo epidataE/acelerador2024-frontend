@@ -28,7 +28,7 @@ const EstudianteList = () => { //UserList va a recibir 'role' para saber si mues
             
             <ul>
                 {users.map(user => (
-                    <li className= "card" key={user.id}>{user.nombre} {user.apellido} | {user.empresa.nombre} | {user.email} | {user.especializacion} </li>
+                    <li className= "card" key={user.id}>{user.nombre} {user.apellido} | {user.empresaNombre} | {user.email} | {user.especializacion} </li>
                 ))}
             </ul>
             </div>
