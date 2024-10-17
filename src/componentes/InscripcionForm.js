@@ -41,7 +41,7 @@ const InscripcionForm = ({ usuarioId }) => {
             navigate('/home');
         } catch (error) {
             console.error('Error:', error);
-            alert('Error al inscribir al usuario');
+            alert('Error al inscribir al usuario: YA TIENES UN PROYECTO ACTIVO');
         }
     };
 
