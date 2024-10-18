@@ -46,7 +46,8 @@ const Home = ({usuarioId}) => {
         <div>
            <div className="recuadro d-flex justify-content-between align-items-center p-3">
             <h2 className="fw-bolder">¡HOLA   {user.nombre} {user.apellido} !</h2>                        
-            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link>            
+            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link> 
+            <Link to="/mensajes"> <button className="btn btn-secondary">MENSAJES</button> </Link>             
         </div>
        
          {/* CURSOS */}
