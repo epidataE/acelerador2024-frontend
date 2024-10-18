@@ -81,13 +81,13 @@ const Home = ({usuarioId}) => {
                             <h6>Participantes:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion} | {user.email}</li>
                                 ))}
                             </ul>
                             <h6>Mentores:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'MENTOR').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion} | {user.email}</li>
                                 ))}
                             </ul>
                             <p className="equipo-nombre" onClick={() => setVisibleEquipo(null)}>Ver Menos...</p>
