@@ -46,7 +46,8 @@ const Home = ({usuarioId}) => {
         <div>
            <div className="recuadro d-flex justify-content-between align-items-center p-3">
             <h2 className="fw-bolder">¡HOLA   {user.nombre} {user.apellido} !</h2>                        
-            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link>            
+            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link> 
+            <Link to="/mensajes"> <button className="btn btn-secondary">MENSAJES</button> </Link>             
         </div>
        
          {/* CURSOS */}
@@ -81,13 +82,13 @@ const Home = ({usuarioId}) => {
                             <h6>Participantes:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion} | {user.email}</li>
                                 ))}
                             </ul>
                             <h6>Mentores:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'MENTOR').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion} | {user.email}</li>
                                 ))}
                             </ul>
                             <p className="equipo-nombre" onClick={() => setVisibleEquipo(null)}>Ver Menos...</p>

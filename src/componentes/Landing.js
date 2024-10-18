@@ -21,30 +21,11 @@ const Landing = () => {
             </nav>
             </div>               
             <nav> 
-                <Link to="/cursos">
+                <Link to="/cartelera">
                     <button className="btn btn-light btn-lg custom-button border border-dark mt-5 w-50">Ver Cursos</button>
                 </Link>
             </nav>
-            {/* <nav className="my-3">
-                <Link to="/users/estudiantes">
-                    <button className="btn btn-dark btn-lg custom-button">Ver Estudiantes</button>
-                </Link>
-            </nav>
-            <nav className="my-3">
-                <Link to="/users/mentores">
-                    <button className="btn btn-dark btn-lg custom-button">Ver Mentores</button>
-                </Link>
-            </nav>
-            <nav className="my-3">
-                <Link to="/equipos">
-                    <button className="btn btn-dark btn-lg custom-button">Crear Equipo</button>
-                </Link>
-            </nav>
-            <nav className="my-3">
-                <Link to="/equipos/listado">
-                    <button className="btn btn-dark btn-lg custom-button">Ver Equipos</button>
-                </Link>
-            </nav> */}
+           
         </div>
     );
 };

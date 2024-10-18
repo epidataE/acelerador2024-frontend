@@ -33,6 +33,7 @@ const CrearEquipo = ({ usuarioId }) => {
     console.log("Usuarios Logueado" + user.nombre);
 
     const handleTeamChange = (e) => {
+       
         const { name, value } = e.target;
         setTeam((prevTeam) => ({
             ...prevTeam,
@@ -42,9 +43,11 @@ const CrearEquipo = ({ usuarioId }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
         try {
             // Crear el equipo
-            const createResponse = await fetch('/api/equipos', {
+            console.log("id que le paso a la url:" + team.curso)
+            const createResponse = await fetch(`/api/equipos?cursoId=${team.curso}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,6 +59,7 @@ const CrearEquipo = ({ usuarioId }) => {
             }
             const createData = await createResponse.json();
             // Asignar participantes al equipo
+            console.log("URL ASIGNAR:" + createData.id, team.desarrolladores, team.uxUi, team.qa)
             const assignResponse = await fetch(`/api/equipos/asignar/${createData.id}/${team.desarrolladores}/${team.uxUi}/${team.qa}`, {
                 method: 'POST',
                 headers: {
@@ -106,6 +110,7 @@ const CrearEquipo = ({ usuarioId }) => {
                     <select
                         name="curso"
                         value={team.curso}
+                        
                         onChange={handleTeamChange}
                     >
                         <option value="">Selecciona un Proyecto</option>
