@@ -49,19 +49,19 @@ const EquipoList = ({usuarioId}) => {
                 equipos.map(equipo => (
                     <div key={equipo.id} className="card">
                         <h3>{equipo.nombre}</h3>
-                        <h5>Curso/Proyecto: {equipo.curso}</h5>
+                        <h5>Curso/Proyecto: { equipo.curso.nombre}</h5>
                         {visibleEquipo === equipo.id ? (
                         <>
                             <h6>Participantes:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'ESTUDIANTE').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion} | {user.email} </li>
                                 ))}
                             </ul>
                             <h6>Mentores:</h6>
                             <ul>
                                 {equipo.usuarios.filter(user => user.rol === 'MENTOR').map(user => (
-                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}</li>
+                                    <li key={user.id}>{user.nombre} {user.apellido} | {user.rol} | {user.especializacion}| {user.email}</li>
                                 ))}
                             </ul>
                             <p className="equipo-nombre" onClick={() => setVisibleEquipo(null)}>Ver Menos...</p>

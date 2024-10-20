@@ -5,7 +5,7 @@ import Landing from './componentes/Landing';
 import Login from './componentes/Login';
 import Home from './componentes/Home';
 import HomeAdmin from './componentes/HomeAdmin'
-import Mensajes from './componentes/Mensajes';
+import Mensajes from './componentes/Mensajeria';
 import EquipoForm from './componentes/EquipoForm';
 import EquipoList from './componentes/EquipoList';
 import UserForm from './componentes/UserForm';
@@ -16,6 +16,7 @@ import CursoForm from './componentes/CursoForm';
 import InscripcionForm from './componentes/InscripcionForm';
 
 import './App.css';
+import CursosLanding from './componentes/CursosLanding';
 
 const App = () => {
     const [usuarioId, setUsuarioId] = useState(null); // para manejar el id del usuario logueado
@@ -68,6 +69,7 @@ const App = () => {
                 con Route: Defino una ruta específica */}
                 <Routes>
                     <Route path="/" element={<Landing />} />
+                    <Route path="/cartelera" element={<CursosLanding />} />
                     <Route path="/login" element={<Login onLogin={handleLogin} />} />
                     <Route path="/admin" element={<HomeAdmin usuarioId={usuarioId}/>}/>
                     <Route path="/home" element={<Home usuarioId={usuarioId} />} />
