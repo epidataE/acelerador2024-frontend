@@ -53,6 +53,9 @@ const CursosLanding = () => {
                 <Link to="/login">
                     <button className="btn btn-primary mx-5 w-50">INSCRIBIRTE</button>
                 </Link>
+                <Link to="/">
+                    <button className="btn btn-light btn-lg custom-button border border-dark mt-5 w-50">Volver</button>
+                </Link>
             </div><hr />      
         </div>
     );

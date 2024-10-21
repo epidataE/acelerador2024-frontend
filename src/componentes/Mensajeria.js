@@ -132,7 +132,7 @@ const Mensajeria = ({usuarioId}) => {
             {/* Barra de Navegación */}
          <div className="d-flex justify-content-center mt-4  w-75">
                 <Link to="/home">
-                    <button className="btn btn-dark">HOME</button>
+                    <button className="btn btn-dark">VOLVER</button>
                 </Link> </div>
         </div>
     );
