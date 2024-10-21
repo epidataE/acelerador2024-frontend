@@ -110,13 +110,16 @@ const UserForm = ({ onSubmit }) => {
                                 </select>
                             </div>
                         )}
-                        <button className="btn btn-dark w-100 mt-3" type="submit">Crear Cuenta</button>
+                        <button className="btn btn-primary w-100 mt-3" type="submit">Crear Cuenta</button>
                         <div className="text-center mt-3">
                             <span>¿Ya Tienes una Cuenta?</span>
                             <Link to="/login">
                                 <button className="btn btn-link mt-2">Inicia Sesión</button>
                             </Link>
                         </div>
+                        <Link to="/">
+                    <button className="btn btn-light btn-lg custom-button border border-dark mt-5 w-50">Volver</button>
+                </Link>
                     </form>
                 </div>
             </div>
