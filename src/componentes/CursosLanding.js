@@ -30,17 +30,28 @@ const CursosLanding = () => {
              <hr/>
              <ul>
                     {cursos.map(curso => (
-                        <li className="card-cartelera" key={curso.id}>
-                        {curso.nombre} | {curso.descripcion} |
-                      </li>
+                        <div >
+                        <h5 className="card-cartelera " key={curso.id} style={{ background: "#7E7E7E" }}>
+                        {curso.nombre}
+                      </h5>
+                      <div class="card-body">
+                    
+                    <p className='fw-bold'>{curso.descripcion}</p>
+                    <p>
+                      {curso.estado ? "PROYECTO ACTIVO" : "PROYECTO NO ACTIVO"}
+                    </p>
+                    
+                                    </div>
+                      </div>
                     ))}
+                    
                 </ul>
            </div>
             <hr />
            {/* Barra de Navegación */}
           <div className="centered-div">
                 <Link to="/login">
-                    <button className="btn btn-dark mx-5 w-50">INSCRIBIRTE</button>
+                    <button className="btn btn-primary mx-5 w-50">INSCRIBIRTE</button>
                 </Link>
             </div><hr />      
         </div>
