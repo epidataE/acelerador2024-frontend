@@ -75,14 +75,19 @@ const Mensajeria = ({usuarioId}) => {
            <Link to="/"> <button className="btn btn-secondary">CERRAR SESION</button> </Link> 
             <Link to="/mensajes"> <button className="btn btn-secondary">MENSAJES</button> </Link>             
        </div>
-            <div className='card'>
+       <div className='container'>
+
+        
+       </div>
+        <div className='row'>
+            <div className='card col-md-6'>
             <h2>Mensajes Recibidos</h2>          
             {mensajesRecibidos.length === 0 ? (
-                    <p className='card-mensajes'>No tienes mensajes recibidos.</p>
+                    <p className='card-mensajes '>No tienes mensajes recibidos.</p>
                 ) : (
                     <ul>
                         {mensajesRecibidos.map((recibidos) => (
-                            <li className='card-mensajes' key={recibidos.id}>
+                            <li className='card-mensajes recib' key={recibidos.id}>
                                 Fecha: {recibidos.fechaEnvio} - De: {recibidos.remitenteNombre} - Mensaje: {recibidos.contenido}
                             </li>
                         ))}
@@ -90,19 +95,20 @@ const Mensajeria = ({usuarioId}) => {
                 )}
            
             </div>
-            <div className='card'>
+            <div className='card col-md-6'>
             <h2>Mensajes Enviados</h2>
             {mensajesEnviados.length === 0 ? (
                     <p>No tienes mensajes enviados.</p>
                 ) : (
                     <ul>
                         {mensajesEnviados.map((enviados) => (
-                            <li className='card-mensajes' key={enviados.id}>
+                            <li className='card-mensajes envi' key={enviados.id}>
                                 Fecha: {enviados.fechaEnvio} - Para: {enviados.destinatarioNombre} - Mensaje: {enviados.contenido}
                             </li>
                         ))}
                     </ul>
                 )}
+            </div>
             </div>
             <div className='card centered-div'>
             <h2 className='mb-4'>Enviar Mensaje</h2>
@@ -126,7 +132,7 @@ const Mensajeria = ({usuarioId}) => {
             {/* Barra de Navegación */}
          <div className="d-flex justify-content-center mt-4  w-75">
                 <Link to="/home">
-                    <button className="btn btn-dark">HOME</button>
+                    <button className="btn btn-dark">VOLVER</button>
                 </Link> </div>
         </div>
     );

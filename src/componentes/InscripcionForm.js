@@ -46,7 +46,7 @@ const InscripcionForm = ({ usuarioId }) => {
     };
 
     return (
-        <div className='centered-div'>
+        <div className='centered-div container' >
             <h2 className='mx-5'>Inscripción a Proyectos</h2>
             <Form.Group className='mx-5' controlId="formCurso">
                 <Form.Label>Selecciona un Proyecto</Form.Label>
@@ -61,7 +61,7 @@ const InscripcionForm = ({ usuarioId }) => {
             </Form.Group>
            {/* Contenedor para los botones */}
            <div className='d-flex justify-content-center'>
-                <Button variant="dark" onClick={handleInscripcion} className="my-5 mx-3">
+                <Button  onClick={handleInscripcion} className="my-5 mx-3 btn-primary">
                     Inscribirse
                 </Button>
                 
